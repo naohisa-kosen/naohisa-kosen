@@ -1,0 +1,85 @@
+<html>
+     <head>
+     <script>
+ 
+ 
+          window.onload = function(){
+               var el = document.getElementsByName("bet")
+               for (var i in el) {
+                    if(i != "item" && i != "length") {
+                         el[i].addEventListener("click",act,false)
+                    }
+               }
+          };
+ 
+ 
+          function act() {
+                
+               var el = document.getElementsByName("bet")
+               var user
+               var enemy
+ 
+               var userAct
+               var enemyAct
+ 
+               userAct = function () {
+                         for (var i in el) {
+                              if(i != "item" && i != "length") {
+                                   if(el[i].checked)
+                                   {
+                                        user = el[i].value
+                                   }
+                              }
+                         }
+                         return user
+                    }
+                
+               user = userAct()
+ 
+               enemyAct = function() {
+                    enemy = Math.floor(Math.random() * (100 - 0) + 1);
+                    console.log(enemy)
+                    if(enemy < 30) {
+                         enemy = "グー"
+                    } else if(enemy > 30 && enemy < 50) {
+                         enemy = "パー"
+                    } else {
+                         enemy = "チョキ"
+                    }
+                    return enemy
+               }
+ 
+               enemy = enemyAct()
+ 
+               playGame = function() {
+                    if((enemy == "グー" && user == 1) || (enemy == "パー" && user == 2) || (enemy == "チョキ" && user == 3)) {
+                         alert("相手は"+enemy+"あいこ")
+                    } else if((enemy == "グー" && user == 2) || (enemy == "パー" && user == 3) || (enemy == "チョキ" && user == 1)) {
+                         alert("相手は"+enemy+"あなたの勝ち")
+                    } else {
+                         alert("相手は"+enemy+"あなたの負け")
+                    }                    
+               }
+ 
+               playGame()
+ 
+          }
+ 
+ 
+     </script>
+     </head>
+     <body>
+     <b>じゃんけんプログラム</b><br>
+          <form id="betform">
+               <input type="radio" name="bet" value="1">グー
+               <input type="radio" name="bet" value="2">パー
+               <input type="radio" name="bet" value="3">チョキ
+          </form>
+     </body>
+ 
+ 
+ 
+ 
+ 
+ 
+</html>
